@@ -10,9 +10,14 @@ import Form from './Form';
 import Home from './Home';
 
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
 const App = () => {
+
   return (
     <Router>
+      <ToastContainer />
       <GlobalStyle />
       <MainTemplate>
         <Wrapper>
