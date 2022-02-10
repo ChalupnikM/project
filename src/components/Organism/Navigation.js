@@ -15,6 +15,7 @@ const Navigation = () => {
             </Logo>
             <StyledLink exact to="/">Home</StyledLink>
             <StyledLink to="/form">Form</StyledLink>
+            <StyledLink to="/history">History</StyledLink>
         </Wrapper>
     );
 };

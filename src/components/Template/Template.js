@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '../Organism/Navigation'
+import Widget from '../Organism/Widget';
 import { Wrapper } from './Template.styles';
 
 const Template = ({ children }) => {
@@ -7,6 +8,7 @@ const Template = ({ children }) => {
         <Wrapper>
             <Navigation />
             {children}
+            <Widget />
         </Wrapper>
     );
 };

@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import FormField from '../components/molecules/FormField';
 import { Button } from '../components/atoms/Button';
 import { ViewWrapper } from '../components/molecules/ViewWrapper';
+import { toast } from 'react-toastify';
+
 import { MapContainer, TileLayer, Polygon, Marker, Popup } from 'react-leaflet'
 import { parseFromWK } from 'wkt-parser-helper';
-import { toast } from 'react-toastify';
 import * as geolib from 'geolib';
+
+import { useDispatch } from 'react-redux';
+import { findPlot } from '../store';
+
 
 const initialFormState = {
     city: '',
@@ -20,6 +25,8 @@ const Form = () => {
     const [position, setPosition] = useState([52.2319151981909, 21.0067752980283]);
     const [popupValue, setPopupValue] = useState('');
 
+    const dispatch = useDispatch()
+
     const purpleOptions = { color: 'purple' };
 
     const [formValues, setFormValues] = useState(initialFormState);
@@ -33,7 +40,10 @@ const Form = () => {
 
     const handleSubmitUser = (e) => {
         e.preventDefault();
+
         // setFormValues(initialFormState);
+
+        dispatch(findPlot({ city: formValues.city, street: formValues.street, number: formValues.number }));
 
         const url =
             `https://services.gugik.gov.pl/uug/?request=GetAddress&exact_number=1&accuracy=0.6&address=${formValues.city}%2C%20${formValues.street}%20${formValues.number}&srid=4326&fbclid=IwAR1LM91E1cD2vOyskbguZ3CUgVzsgMlNrIQI5HCJGePtgITH7jxFkGU3rMw`;
@@ -57,18 +67,14 @@ const Form = () => {
 
                 const geojson = parseFromWK(data2);
                 const geojson2 = parseFromWK(data2);
-
                 for (let i = 0; i < geojson.coordinates[0].length; i++) {
-
                     geojson.coordinates[0][i].reverse();
-
                 }
-
                 setMyData(geojson.coordinates[0]);
-
+    
                 setPopupValue((geolib.getAreaOfPolygon(geojson2.coordinates[0])).toFixed(2));
                 // setPopupValue(((geolib.getAreaOfPolygon(geojson.coordinates[0])) * 0.7).toFixed(0));
-
+            
 
             } catch (error) {
                 toast.error("Oops something went wrong! Check the data", {
