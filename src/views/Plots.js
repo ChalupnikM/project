@@ -20,19 +20,18 @@ const Wrapper = styled.div`
 
 
 const Plots = () => {
-    //   const dispatch = useDispatch();
-    const plots = useSelector(state => state.plots);
+  //   const dispatch = useDispatch();
+  const plots = useSelector(state => state.plots);
 
-    return (
-        <ViewWrapper>
-            <Wrapper>
-                {console.log(plots.length)}
-                {plots.length > 1
-                ? plots.map(({ city, street, number, id }) => <Plot id={id} key={id} city={city} street={street} number={number} />)    
-                : <p>Find your first plot </p>}
-            </Wrapper>
-        </ViewWrapper>
-    );
+  return (
+    <ViewWrapper>
+      <Wrapper>
+        {plots.length > 1
+          ? plots.map(({ city, street, number, id }) => <Plot id={id} key={id} city={city} street={street} number={number} />)
+          : <p>Find your first plot</p>}
+      </Wrapper>
+    </ViewWrapper>
+  );
 };
 
 export default Plots;

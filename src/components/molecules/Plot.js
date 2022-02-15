@@ -17,7 +17,7 @@ const Plot = ({ city, street, number, id }) => {
 
   return (
     <NoteWrapper>
-        <p>{city}, {street} {number}</p>
+        <p>{city} {street} {number}</p>
     </NoteWrapper>
   );
 };

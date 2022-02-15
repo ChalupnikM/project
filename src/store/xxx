@@ -1,0 +1,24 @@
+export const getApi = createAsyncThunk(
+    'api/getApi',
+    async (obj,{ getState }) => {
+        const { plots } = getState();
+        const city = plots[plots.length-1].city
+        const street = plots[plots.length-1].street;
+        const number = plots[plots.length-1].number;
+        return fetch(`https://services.gugik.gov.pl/uug/?request=GetAddress&exact_number=1&accuracy=0.6&address=${city}%2C%20${street}%20${number}&srid=4326&fbclid=IwAR1LM91E1cD2vOyskbguZ3CUgVzsgMlNrIQI5HCJGePtgITH7jxFkGU3rMw`
+        ).then((res) => res.json())
+        //.then((data) => console.log(data.results['city']))
+        .then((data) => {
+            const tablica = Object.values(data.results);
+            const x = tablica[0].x;
+            const y = tablica[0].y;
+            console.log(x,y);
+        })
+        .then((x,y) => fetch(`https://uldk.gugik.gov.pl/?request=GetParcelByXY&xy=19.2470161655994,49.6777740239952,4326&result=geom_wkt&srid=4326`)
+        .then((res => console.log(res.json())
+        .then((data => {
+            console.log(data);
+        })))));
+    }
+
+)
