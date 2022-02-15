@@ -1,37 +1,30 @@
-import { createStore } from 'redux';
 import { v4 as uuid } from 'uuid';
+import { createSlice } from '@reduxjs/toolkit';
 
-export const findPlot = (payload) => {
-    return {
-        type: 'plots/find',
-        payload: {
-            id: uuid(),
-            ...payload,
-        }
+const initialPltosState = [
+    {
+        id: '',
+        city: '',
+        street: '',
+        number: '',
     }
-};
+];
 
-const initialState = {
-    plots: [
-        {
-            id: '',
-            city: '',
-            street: '',
-            number: ''
-        }
-    ],
-}
-
-const plotsReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'plots/find':
-            return {
-                ...state,
-                plots: [...state.plots, action.payload]
-            };
-        default:
-            return state;
+const plotsSlice = createSlice({
+    name: 'plots',
+    initialState: initialPltosState,
+    reducers: {
+        findPlot(state, action) {
+            state.push({
+                id: uuid(),
+                ...action.payload
+            })
+        },
     }
-}
+})
+export const { findPlot } = plotsSlice.actions;
+export default plotsSlice.reducer;
 
-export const store = createStore(plotsReducer);
+
+
+
