@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewWrapper } from '../components/molecules/ViewWrapper';
+import { ViewHomeWrapper } from '../components/molecules/ViewWrapper';
 import './Home.css';
 
 import { useSelector } from 'react-redux';
@@ -7,15 +7,15 @@ import { useSelector } from 'react-redux';
 import { MapContainer, TileLayer, Polygon, Marker, Popup } from 'react-leaflet'
 
 const Homepage = () => {
-    const { array } = useSelector((state) => state.api);
+    const { array } = useSelector(state => state.api);
     const { x } = useSelector(state => state.x);
     const { y } = useSelector(state => state.y);
     const { areaValue }= useSelector(state => state.areaValue);
     const { zoomValue } = useSelector(state => state.zoomValue)
     const purpleOptions = { color: 'purple' };
-    
+
     return (
-        <ViewWrapper>
+        <ViewHomeWrapper>
             <p>Find Your Plot Here!</p>
             <MapContainer center={[y, x]} zoom={zoomValue} scrollWheelZoom={false} >
                 <TileLayer
@@ -31,7 +31,7 @@ const Homepage = () => {
                 : null}
                 <Polygon pathOptions={purpleOptions} positions={array} />
             </MapContainer>
-        </ViewWrapper>
+        </ViewHomeWrapper>
 
     );
 

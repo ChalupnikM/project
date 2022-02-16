@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+//import axios from 'axios';
 import { parseFromWK } from 'wkt-parser-helper';
 import * as geolib from 'geolib';
 

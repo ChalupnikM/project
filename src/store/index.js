@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialPltosState = [
     {
         id: '',
+        date: '',
         city: '',
         street: '',
         number: '',
