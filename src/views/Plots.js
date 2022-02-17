@@ -3,7 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { ViewHistoryWrapper, ViewWithoutHistoryWrapper } from '../components/molecules/ViewWrapper';
 import { useSelector } from 'react-redux';
 import { Wrapper } from '../components/Organism/Navigation.styles';
-import { useDemoData } from '@mui/x-data-grid-generator';
+
 
 const columns = [
   { field: 'date', headerName: 'Date', width: 200 },

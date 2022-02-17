@@ -15,7 +15,7 @@ const plotsSlice = createSlice({
     name: 'plots',
     initialState: initialPltosState,
     reducers: {
-        findPlot(state, action) {
+        setPlot(state, action) {
             state.push({
                 id: uuid(),
                 ...action.payload
@@ -23,7 +23,7 @@ const plotsSlice = createSlice({
         },
     }
 })
-export const { findPlot } = plotsSlice.actions;
+export const { setPlot } = plotsSlice.actions;
 export default plotsSlice.reducer;
 
 

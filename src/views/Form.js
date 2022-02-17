@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 
 import { getApi } from '../store/apiSlice';
 import { useDispatch } from 'react-redux';
-import { findPlot } from '../store';
 
 
 const initialFormState = {
@@ -29,17 +28,8 @@ const Form = () => {
 
     const handleSubmitUser = (e) => {
         e.preventDefault();
-
-        const today = new Date();
-        const date = today.getFullYear()+'-'+((today.getMonth()+1) < 10 ? '0'+(today.getMonth()+1) : (today.getMonth()+1)) +'-'+(today.getDate() < 10 ? '0'+today.getDate() : today.getDate())
-        const time = (today.getHours() < 10 ? '0'+today.getHours() : today.getHours()) + ":" + (today.getMinutes() < 10 ? '0'+today.getMinutes() : today.getMinutes()) + ":" + (today.getSeconds() < 10 ? '0'+today.getSeconds() : today.getSeconds())
-        
-        const dateTime = date+' '+time;
-        console.log(dateTime);
         if(formValues.city && formValues.street && formValues.number) {
-            dispatch(findPlot({ city: formValues.city, street: formValues.street, number: formValues.number, date: dateTime}));
-            dispatch(getApi());
-
+            dispatch(getApi(formValues));
         }
         else {
             toast.error("Oops something went wrong! Check the data", {
