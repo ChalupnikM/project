@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 
 import apiReducer from './apiSlice';
-import plotsReducer from './index';
+import plotsReducer from './plotsSlice';
 import xReducer from './xSlice';
 import yReducer from './ySlice';
 import areaReducer from './areaValueSlice'

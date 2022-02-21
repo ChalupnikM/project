@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+
 import FormField from '../components/molecules/FormField';
 import { Button } from '../components/atoms/Button';
-import { ViewWrapper } from '../components/molecules/ViewWrapper';
+import { ViewFormWrapper } from '../components/molecules/ViewWrapper';
+import { toast } from 'react-toastify';
 
 import { getApi } from '../store/apiSlice';
 import { useDispatch } from 'react-redux';
-import { findPlot } from '../store';
 
 
 const initialFormState = {
@@ -27,18 +28,24 @@ const Form = () => {
 
     const handleSubmitUser = (e) => {
         e.preventDefault();
-        dispatch(findPlot({ city: formValues.city, street: formValues.street, number: formValues.number }));
-        dispatch(getApi());
+        if(formValues.city && formValues.street && formValues.number) {
+            dispatch(getApi(formValues));
+        }
+        else {
+            toast.error("Oops something went wrong! Check the data", {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
         
  };
 
     return (
-        <ViewWrapper as="form" onSubmit={handleSubmitUser}>
+        <ViewFormWrapper as="form" onSubmit={handleSubmitUser}>
             <FormField label="City" id="city" name="city" value={formValues.city} onChange={handleInputChange} />
             <FormField label="Street" id="street" name="street" value={formValues.street} onChange={handleInputChange} />
             <FormField label="House number" type="number" id="number" name="number" value={formValues.number} onChange={handleInputChange} />
             <Button type="submit">Send</Button>
-        </ViewWrapper>
+        </ViewFormWrapper>
     )
 }
 
