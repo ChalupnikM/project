@@ -8,4 +8,9 @@ export const Button = styled.button`
     border-radius: 20px;
     border: none;
     color: #737C8E;
+
+    &:active {
+            box-shadow: 0 1px #ECEFF7;
+            transform: translateY(4px);
+    }
 `;

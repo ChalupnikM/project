@@ -48,6 +48,10 @@ export const getApi = createAsyncThunk(
         thunkAPI.dispatch(setZoomValue(17));
         thunkAPI.dispatch(setAreaValue(((geolib.getAreaOfPolygon(geojson2.coordinates[0])).toFixed(2))));
         thunkAPI.dispatch(setPlot({ city: propsValue.city, street: propsValue.street, number: propsValue.number, date: dateTime}));
+
+        toast.success("We found your plot, look at the map!", {
+             position: toast.POSITION.TOP_CENTER
+        });
         return geojson.coordinates[0];
 
     } catch (error) {

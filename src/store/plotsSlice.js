@@ -21,9 +21,12 @@ const plotsSlice = createSlice({
                 ...action.payload
             })
         },
+        removePlot(state, action) {
+            return state.filter((note) => note.id !== action.payload.id);
+        }
     }
 })
-export const { setPlot } = plotsSlice.actions;
+export const { setPlot, removePlot } = plotsSlice.actions;
 export default plotsSlice.reducer;
 
 

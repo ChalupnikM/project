@@ -1,6 +1,6 @@
 import React from 'react';
 import { ViewHomeWrapper } from '../components/molecules/ViewWrapper';
-import './Home.css';
+import './Plots.css';
 
 import { useSelector } from 'react-redux';
 
@@ -16,7 +16,6 @@ const Homepage = () => {
 
     return (
         <ViewHomeWrapper>
-            <p>Find Your Plot Here!</p>
             <MapContainer center={[y, x]} zoom={zoomValue} scrollWheelZoom={false} >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
