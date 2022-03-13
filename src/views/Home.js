@@ -28,7 +28,9 @@ const Homepage = () => {
                     </Popup>
                 </Marker>
                 : null}
+                {array ?
                 <Polygon pathOptions={purpleOptions} positions={array} />
+                : null}
             </MapContainer>
         </ViewHomeWrapper>
 
