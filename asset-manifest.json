@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ChalupnikM/project/static/css/main.ea71b2af.css",
+    "main.js": "/ChalupnikM/project/static/js/main.f959b015.js",
+    "index.html": "/ChalupnikM/project/index.html",
+    "main.ea71b2af.css.map": "/ChalupnikM/project/static/css/main.ea71b2af.css.map",
+    "main.f959b015.js.map": "/ChalupnikM/project/static/js/main.f959b015.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea71b2af.css",
+    "static/js/main.f959b015.js"
+  ]
+}
